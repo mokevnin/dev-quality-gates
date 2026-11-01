@@ -621,7 +621,21 @@
         "https://rumdl.dev/markdownlint-comparison"
       ],
       "rationale": "Markdown linter and formatter that reads markdownlint configuration. `rumdl check` exits 1 on violations, `rumdl fmt` fixes.",
-      "limitations": "Pre-1.0 (v0.3.0). Compatibility with markdownlint is the project's own claim; custom JavaScript rules written for markdownlint are not expected to carry over."
+      "limitations": "Pre-1.0 (v0.3.0). Compatibility with markdownlint is the project's own claim; custom JavaScript rules written for markdownlint are not expected to carry over. Does not parse Mermaid diagrams: rumdl 0.3.0 exits 0 on a Markdown file whose only fault is a broken mermaid fence (run 2026-11-01)."
+    },
+    {
+      "id": "mermaid-lint",
+      "name": "mermaid-lint",
+      "repo": "jasonworden/mermaid-lint",
+      "category": "Documentation",
+      "last_reviewed": "2026-11-01",
+      "sources": [
+        "https://github.com/jasonworden/mermaid-lint",
+        "https://www.npmjs.com/package/@mermaid-lint/cli"
+      ],
+      "rationale": "fails when a Mermaid diagram in Markdown does not parse. `mermaid-lint` uses the Mermaid parser, exits 1 on a parse error, and prints JSON. It does not lint Markdown style; rumdl still does that.",
+      "limitations": "Node 22 or newer, not a native binary. A warning such as `prefer-flowchart` does not fail the run unless `--strict`. No SARIF. Young and small: repository created 2026-06-16, 14 stars, last code commit 2026-08-13 (v0.53.1), 24 open issues, no security advisories. `@mermaid-js/mermaid-cli` was not run: its help and source show a Puppeteer render that writes an image, and no browser was available here. Ran `@mermaid-lint/cli` 0.53.1 on 2026-11-01.",
+      "details": "research/mermaid.md"
     },
     {
       "id": "oasdiff",

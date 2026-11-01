@@ -191,6 +191,7 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 - **[lychee](https://github.com/lycheeverse/lychee)**: broken links.
 - **[typos](https://github.com/crate-ci/typos)**: low-noise spell checking of source code and docs.
 - **[rumdl](https://github.com/rvben/rumdl)**: Markdown linter and formatter that reads markdownlint configuration. `rumdl check` exits 1 on violations, `rumdl fmt` fixes.
+- **[mermaid-lint](https://github.com/jasonworden/mermaid-lint)**: fails when a Mermaid diagram in Markdown does not parse. `mermaid-lint` uses the Mermaid parser, exits 1 on a parse error, and prints JSON. It does not lint Markdown style; rumdl still does that. [Details](research/mermaid.md).
 
 <!-- tools:end -->
 
