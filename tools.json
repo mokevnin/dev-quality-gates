@@ -45,13 +45,15 @@
       "name": "ty",
       "repo": "astral-sh/ty",
       "category": "Python",
-      "last_reviewed": "2026-10-23",
+      "last_reviewed": "2026-11-01",
       "sources": [
         "https://github.com/astral-sh/ty#readme",
-        "research/rust-native.md"
+        "research/rust-native.md",
+        "research/mypy-plugins.md"
       ],
       "rationale": "fast Python type checker and language server from the authors of Ruff and uv.",
-      "limitations": "Beta: 0.0.x, so new releases can add type errors; pin the version. mypy (160 million downloads) and pyright are the stable, battle-tested choices, and Pyrefly (Meta, stable 1.4, 7.1k stars) is the other Rust option."
+      "limitations": "Beta: 0.0.x, so new releases can add type errors; pin the version. mypy (160 million downloads) and pyright are the stable, battle-tested choices, and Pyrefly (Meta, stable 1.4, 7.1k stars) is the other Rust option. Does not load mypy plugins. Ran 2026-11-01 on ty 0.0.95 (released 2026-10-29): pydantic.mypy rejects an unannotated BaseModel field and ty does not; a frozen model is an error for ty without that plugin. mypy-protobuf message stubs were accepted and rejected the same way by both. `ty check --help` has no plugin flag.",
+      "details": "research/mypy-plugins.md"
     },
     {
       "id": "golangci-lint",

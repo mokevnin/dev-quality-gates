@@ -53,7 +53,7 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 ### Python
 
 - **[Ruff](https://github.com/astral-sh/ruff)**: linter and formatter that replaces Flake8, isort, pyupgrade and Black.
-- **[ty](https://github.com/astral-sh/ty)**: fast Python type checker and language server from the authors of Ruff and uv.
+- **[ty](https://github.com/astral-sh/ty)**: fast Python type checker and language server from the authors of Ruff and uv. [Details](research/mypy-plugins.md).
 - **[deptry](https://github.com/osprey-oss/deptry)**: unused, missing and transitive dependencies.
 - **[import-linter](https://github.com/seddonym/import-linter)**: import contracts (layers, forbidden, independence, protected) that fail CI. [Details](research/stack-python-ruby-php.md).
 - **[django-upgrade](https://github.com/adamchainz/django-upgrade)**: rewrites code to the idioms of your target Django version, and fails CI when files would change. [Details](research/ecosystem-gaps.md).
