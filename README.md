@@ -162,6 +162,10 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 - **[TFLint](https://github.com/terraform-linters/tflint)**: Terraform correctness and provider-specific rules through plugins. [Details](research/cross-cutting.md).
 - **[Kubeconform](https://github.com/yannh/kubeconform)**: validates Kubernetes manifests against API and CRD schemas. [Details](research/cross-cutting.md).
 
+### Ansible
+
+- **[ansible-lint](https://github.com/ansible/ansible-lint)**: checks Ansible playbooks, roles and collections for practices that cause bugs or block upgrades. A violation exits 2. [Details](research/ansible.md).
+
 ### Config files
 
 - **[check-jsonschema](https://github.com/python-jsonschema/check-jsonschema)**: validates YAML, JSON and TOML against JSON Schema, with ready hooks for common formats. [Details](research/cross-cutting.md).
