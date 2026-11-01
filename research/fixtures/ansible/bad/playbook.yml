@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - shell: echo hello
+    - name: Check uptime
+      command: uptime

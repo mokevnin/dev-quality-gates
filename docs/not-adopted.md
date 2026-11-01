@@ -64,6 +64,9 @@ Reasons used below:
 | [PHPat](https://github.com/carlosas/phpat) | Overlap: Mago `guard` covers architecture rules in the same binary. | Your framework needs PHPStan and Mago is not used. |
 | [GritQL](https://github.com/biomejs/gritql), [Comby](https://github.com/comby-tools/comby) | Alternatives to ast-grep. GritQL is pre-1.0 (v0.0.3) with its own query language; Comby has had no release since 2022 and matches text patterns, not syntax trees. | GritQL reaches 1.0, or you need Comby's language-agnostic matching. |
 | [React Doctor](https://github.com/millionco/react-doctor) | Overlaps the ESLint/Oxlint React rules and Knip. Licence is a "Modified MIT" with use restrictions (npm: "SEE LICENSE IN LICENSE"). Its score needs a remote API. Findings and exit codes ran on 0.9.18 ([research](../research/stack-javascript.md#react-doctor-reviewed-2026-10-26)). | Its React-specific rules prove to catch what eslint-plugin-react misses, or run as the Oxlint plugin without the remote score. |
+| [ansible-review](https://github.com/willthames/ansible-review) | Stale wrapper around ansible-lint. PyPI 0.13.9 on 2018-11-25, last push 2021-04-01. On 2026-11-01 `ansible-review --help` exited 1 because `default_rulesdir` is gone from ansible-lint. [Details](../research/ansible.md). | A release that starts against current ansible-lint and checks something it does not. |
+| [Steampunk Spotter](https://gitlab.com/xlab-steampunk/steampunk-spotter-client/spotter-cli) | Current CLI (6.6.0, 2026-10-14), but a scan needs their hosted API. The vendor says it does not replace ansible-lint. [Details](../research/ansible.md). | A local mode that fails the build without uploading the playbook. |
+| [Molecule](https://github.com/ansible/molecule) | A test runner for roles and playbooks (v26.10.0, 2026-10-12), not a linter. | Not applicable. |
 
 ## Held back (Unverified)
 

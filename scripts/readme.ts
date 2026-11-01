@@ -32,6 +32,7 @@ export const CATEGORY_ORDER = [
   'Vulnerabilities',
   'Dependency updates',
   'Docker, Terraform and Kubernetes',
+  'Ansible',
   'Config files',
   'Policy',
   'Agent configuration',

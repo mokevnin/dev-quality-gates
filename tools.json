@@ -382,6 +382,21 @@
       "stable_exception": true
     },
     {
+      "id": "ansible-lint",
+      "name": "ansible-lint",
+      "repo": "ansible/ansible-lint",
+      "category": "Ansible",
+      "last_reviewed": "2026-11-01",
+      "sources": [
+        "https://github.com/ansible/ansible-lint",
+        "https://docs.ansible.com/projects/lint/",
+        "research/ansible.md"
+      ],
+      "rationale": "checks Ansible playbooks, roles and collections for practices that cause bugs or block upgrades. A violation exits 2.",
+      "limitations": "GPL-3.0, and a Python package that installs ansible-core, not a native binary. The gate is a run without `--fix` and without `--profile min`: `--fix` rewrites files and exits 8, and `--profile min` exited 0 on a playbook the default run rejects. With no paths it also applies bundled yamllint to other YAML in the tree. `--offline` skips collection installs and schema refresh. Ran 26.10.1 on 2026-11-01; the fixture covers playbooks, not a role or a collection.",
+      "details": "research/ansible.md"
+    },
+    {
       "id": "check-jsonschema",
       "name": "check-jsonschema",
       "repo": "python-jsonschema/check-jsonschema",
