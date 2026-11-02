@@ -1,6 +1,6 @@
 # Mermaid diagrams in Markdown
 
-Reviewed **2026-11-01**. Decision: **add mermaid-lint**. rumdl checks Markdown style and does not parse diagrams. A broken `mermaid` fence is a different failure, and it needs its own command.
+Reviewed **2026-11-01**. Decision: **keep under review**. rumdl checks Markdown style and does not parse diagrams. A broken `mermaid` fence is a different failure. mermaid-lint can fail that case, but it is too young and small to list, and the other checkers were not run.
 
 `@mermaid-js/mermaid-cli` (`mmdc`) is the official renderer. It is not the gate. See [docs/not-adopted.md](../docs/not-adopted.md).
 
@@ -12,7 +12,7 @@ Checked against the GitHub API on 2026-11-01.
 
 [mermaid-js/mermaid-cli](https://github.com/mermaid-js/mermaid-cli) v12.0.0 was published 2026-09-24. The repository was pushed 2026-10-28, is not archived, is MIT, and has about 5.1k stars. No successor was found. This is the maintained official CLI, and it renders.
 
-Other diagram checkers turned up in a repository search and were not run: [sammcj/mermaid-check](https://github.com/sammcj/mermaid-check), [suwa-sh/md-mermaid-lint](https://github.com/suwa-sh/md-mermaid-lint), [probelabs/maid](https://github.com/probelabs/maid), [Yokozuna59/mermaid-lint](https://github.com/Yokozuna59/mermaid-lint). None is the official parser, and none is large enough to displace a tool that already calls it.
+Other diagram checkers turned up in a repository search and were not run: [sammcj/mermaid-check](https://github.com/sammcj/mermaid-check), [suwa-sh/md-mermaid-lint](https://github.com/suwa-sh/md-mermaid-lint), [probelabs/maid](https://github.com/probelabs/maid), [Yokozuna59/mermaid-lint](https://github.com/Yokozuna59/mermaid-lint). mermaid-lint also wraps the Mermaid parser, so that does not separate them. A run of one of them on these fixtures is what would pick a recommendation.
 
 ## What it enforces
 
@@ -26,7 +26,7 @@ Other diagram checkers turned up in a repository search and were not run: [sammc
 
 `--format json` prints a report and keeps stderr quiet. `--fix` rewrites mechanical faults in place (this run used an unclosed fence). There is no SARIF output. The package requires Node.js 22 or newer.
 
-The command for CI is `mermaid-lint` on the Markdown paths, without `--strict` and without `--fix`. `--strict` also fails style warnings. A `graph` diagram is valid Mermaid and still warns `prefer-flowchart`; that warning must not fail a parse gate.
+A parse-only invocation is `mermaid-lint` on the Markdown paths, without `--strict` and without `--fix`. `--strict` also fails style warnings. A `graph` diagram is valid Mermaid and still warns `prefer-flowchart`; that warning must not fail a parse gate. This is not a recommendation: see the decision below.
 
 ## Executed checks
 
@@ -62,3 +62,7 @@ python3 research/fixtures/mermaid/run.py /tmp/mermaid-results
 - Warnings are not failures unless `--strict` is passed. Do not pass `--strict` if the only standard is "the diagram parses".
 - No SARIF.
 - `mmdc` remains the tool when the job is to render a diagram. It is the wrong tool when the job is to fail CI without a browser.
+
+## Decision
+
+Keep mermaid-lint under review. No `tools.json` entry. List it only after another checker is run on these fixtures, or after the project is no longer a four-month-old single-maintainer repository whose last code commit is 2026-08-13. `mmdc` stays in [not-adopted](../docs/not-adopted.md). rumdl's limit stays: it does not parse diagrams.
