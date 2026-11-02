@@ -185,7 +185,6 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 ### Git conventions
 
 - **[commitlint](https://github.com/conventional-changelog/commitlint)**: checks that commit messages follow Conventional Commits, in a hook or over a CI range, with shareable configs.
-- **[commitizen](https://github.com/commitizen-tools/commitizen)**: the Conventional Commits check for a Python project with no Node. `cz check` covers one message or a CI rev range and exits non-zero on a violation; repos that already run Node keep commitlint.
 
 ### Documentation
 

@@ -63,7 +63,7 @@ A migration that has shipped must not change. Check it in CI against the base br
 
 ## Conventional Commits and releases
 
-commitlint on the pushed range makes the commit format mandatory. A Python project with no Node uses `cz check --rev-range` for the same check. A release tool that reads those commits (for example release-please, or `cz bump`) then builds versions and changelogs from them. The enforcement is the commit check; the release tool is only a consumer, which is why the bump is not a separate recommendation.
+commitlint on the pushed range makes the commit format mandatory. A release tool that reads those commits (for example release-please) then builds versions and changelogs from them. The enforcement is commitlint; the release tool is only a consumer, which is why it is not on the tool list.
 
 ## Rules for AI agents
 

@@ -112,20 +112,7 @@
         "https://commitlint.js.org/"
       ],
       "rationale": "checks that commit messages follow Conventional Commits, in a hook or over a CI range, with shareable configs.",
-      "limitations": "Requires Node. Checks format only, not whether the message is accurate. Compared on 2026-10-23 with the Rust options cocogitto (1.2k stars, last push 2026-04), convco (329 stars) and committed (185 stars, last release 2026-02): none has the adoption or the release pace, so Node remains the main cost. Python projects without Node use commitizen, listed in this category, and only its `cz check` command."
-    },
-    {
-      "id": "commitizen",
-      "name": "commitizen",
-      "repo": "commitizen-tools/commitizen",
-      "category": "Git conventions",
-      "last_reviewed": "2026-11-01",
-      "sources": [
-        "https://commitizen-tools.github.io/commitizen/",
-        "https://github.com/commitizen-tools/commitizen"
-      ],
-      "rationale": "the Conventional Commits check for a Python project with no Node. `cz check` covers one message or a CI rev range and exits non-zero on a violation; repos that already run Node keep commitlint.",
-      "limitations": "Not a release tool: `cz bump`, changelog generation and tagging stay off this list, same boundary as release-please. Plain-text diagnostics only, no JSON or SARIF, and a bad message exits 14 rather than 1. Reviewed 2026-11-01: v4.19.3 released 2026-10-24, last push 2026-10-25, not archived, MIT, no GitHub security advisories. Ran `cz check --message` and `cz check --rev-range` on 4.19.3 that day: a valid `fix:` message exits 0, `not conventional` exits 14."
+      "limitations": "Requires Node. Checks format only, not whether the message is accurate. Compared on 2026-10-23 with the Rust options cocogitto (1.2k stars, last push 2026-04), convco (329 stars) and committed (185 stars, last release 2026-02): none has the adoption or the release pace, so Node remains the main cost. Python projects without Node can use commitizen."
     },
     {
       "id": "lychee",
