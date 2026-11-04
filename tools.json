@@ -638,7 +638,7 @@
         "https://rumdl.dev/markdownlint-comparison"
       ],
       "rationale": "Markdown linter and formatter that reads markdownlint configuration. `rumdl check` exits 1 on violations, `rumdl fmt` fixes.",
-      "limitations": "Pre-1.0 (v0.3.0). Compatibility with markdownlint is the project's own claim; custom JavaScript rules written for markdownlint are not expected to carry over."
+      "limitations": "Pre-1.0 (v0.3.0). Compatibility with markdownlint is the project's own claim; custom JavaScript rules written for markdownlint are not expected to carry over. Does not parse Mermaid diagrams: rumdl 0.3.0 exits 0 on a Markdown file whose only fault is a broken mermaid fence (run 2026-11-01)."
     },
     {
       "id": "oasdiff",

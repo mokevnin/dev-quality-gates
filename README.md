@@ -215,6 +215,7 @@ These categories matter but have **no recommendation yet**: the candidates were 
 | Custom rules with data-flow | Opengrep, Semgrep | Opengrep is a community fork; its cross-file limits and licence trade-offs need a closer look. |
 | Architecture, other ecosystems | arch-go, tach | go-arch-lint is now listed; arch-go is the smaller Go alternative. tach is a Rust option for Python. |
 | YAML style | yamllint | Not yet compared with schema validation. |
+| Mermaid diagrams in Markdown | mermaid-lint, mermaid-check, md-mermaid-lint, maid | rumdl does not parse diagrams (run). mermaid-lint works as a parse gate in a run but is young and small; the others were not run. [Notes](research/mermaid.md). |
 | Licences and supply chain | REUSE, Scorecard, Syft, ScanCode Toolkit | Mostly reporting tools; need an enforcement angle. |
 
 ## How this list is kept current
