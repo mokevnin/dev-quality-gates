@@ -99,6 +99,8 @@ Say in `rationale` or `limitations` what you ran and what you only read: a tool 
 
 The `Lint` workflow runs rumdl, lychee, typos, jactionlint on this repository's own workflows, and the registry check. Run them locally before you push. Pin every action in this repository to a full commit SHA with a version comment.
 
+Dependabot pull requests merge themselves: the `Dependabot auto-merge` workflow turns on auto-merge, and GitHub squashes the pull request once the required `check` job passes. A failing check leaves it open for a human.
+
 ## Removing or replacing a tool
 
 Open a pull request that edits the entry and `tools.json`. For a removal, link the evidence (archived repository, announced end of life, unfixed critical issue). For a replacement, include the comparison required above, and say what a user of the old tool has to change. Add a row to [docs/not-adopted.md](docs/not-adopted.md) for the tool that was rejected or replaced.
