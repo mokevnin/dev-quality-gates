@@ -93,7 +93,7 @@ The README list is **generated from `tools.json`**. Do not edit the entries in `
 
 Say in `rationale` or `limitations` what you ran and what you only read: a tool you tested is stronger evidence than one described by its README. Longer comparisons go in `research/<topic>.md`.
 
-`pnpm run check:registry` validates `tools.json` against `tools.schema.json` and fails if `README.md` is out of date. Scripts are TypeScript (`scripts/`), run directly by Node 24 and checked with `pnpm run typecheck`.
+`pnpm run check:registry` validates `tools.json` against `tools.schema.json` and fails if `README.md` is out of date. Scripts are TypeScript (`scripts/`), run directly by Node 26 and checked with `pnpm run typecheck`.
 
 ## Checks
 
