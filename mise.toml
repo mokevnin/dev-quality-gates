@@ -1,13 +1,15 @@
 # One toolchain for developers, git hooks and CI: `mise install`, then `mise run check`.
+min_version = "2026.11.3"
+
 [tools]
-node = "24"
-pnpm = "12.15.0"
-hk = "2.8.1"
-pkl = "0.32.2"
-rumdl = "0.3.0"
-typos = "1.51.1"
+node = "26"
+pnpm = "12.18.0"
+hk = { version = "2.11.1", workflow = "release.yml" }
+pkl = "0.33.0"
+rumdl = "0.3.2"
+typos = "1.52.0"
 lychee = "0.24.2"
-jactionlint = "2.3.0"
+jactionlint = { version = "2.5.0", workflow = "release.yaml" }
 
 [tasks.setup]
 description = "Install dependencies and the git hooks"
