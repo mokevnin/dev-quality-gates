@@ -9,7 +9,7 @@ Reviewed **2026-10-24**. Decision: **Under review**, not a recommendation. Dive 
 - Alex Goodman published the latest release; the history also includes community contributors. The repository is not archived, but current maintainer responsiveness was not established. No official deprecation announcement or designated successor was found.
 - The joschi fork was [reintegrated in March 2025](https://github.com/wagoodman/dive/pull/570); [joschi/dive](https://github.com/joschi/dive) is now archived. It is not an actively maintained replacement.
 
-These observations came from the [release API](https://api.github.com/repos/wagoodman/dive/releases/latest), [commit history](https://api.github.com/repos/wagoodman/dive/commits?per_page=50), repository pages and [licence](https://github.com/wagoodman/dive/blob/v0.13.1/LICENSE), not release-age heuristics alone.
+These observations came from the GitHub API for the [latest release](https://github.com/wagoodman/dive/releases/latest) and the [commit history](https://github.com/wagoodman/dive/commits/main), repository pages and [licence](https://github.com/wagoodman/dive/blob/v0.13.1/LICENSE), not release-age heuristics alone.
 
 ## What it enforces
 
