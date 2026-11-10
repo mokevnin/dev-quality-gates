@@ -38,7 +38,23 @@
         "https://docs.astral.sh/ruff/"
       ],
       "rationale": "linter and formatter that replaces Flake8, isort, pyupgrade and Black.",
-      "limitations": "no type checking, no custom-rule plugins. The `S` rules replace Bandit, `D` replaces pydocstyle (archived) and `C901` replaces xenon and radon; pair with vulture for dead code across modules."
+      "limitations": "no type checking, no custom-rule plugins. The `S` rules overlap Bandit but miss the B614/B615 cases in research/bandit.md; add only those Bandit checks when needed. `D` replaces pydocstyle (archived) and `C901` replaces xenon and radon; pair with vulture for dead code across modules."
+    },
+    {
+      "id": "bandit",
+      "name": "Bandit",
+      "repo": "PyCQA/bandit",
+      "category": "Python",
+      "last_reviewed": "2026-11-10",
+      "sources": [
+        "https://bandit.readthedocs.io/en/latest/",
+        "https://github.com/PyCQA/bandit/releases/tag/1.9.4",
+        "research/bandit.md",
+        "research/fixtures/bandit/run.py"
+      ],
+      "rationale": "additional security checks for Python projects that load PyTorch models or download from Hugging Face: select `B614,B615` to cover gaps in Ruff `S`.",
+      "limitations": "Ran Bandit 1.9.4 against Ruff 0.17.4 on 2026-11-10; most checks overlap, so do not run both full security suites by default. No data-flow analysis or autofix; a file Bandit cannot parse still exits 0 (#1326, reproduced), so fail the job on a nonempty JSON `errors` list too (snippet in research/bandit.md). Last release and core fixes are from February 2026; recent pushes update CI, and security follow-up #1381 remains unresolved. No freshness exception.",
+      "details": "research/bandit.md"
     },
     {
       "id": "ty",

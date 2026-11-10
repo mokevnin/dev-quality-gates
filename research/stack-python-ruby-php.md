@@ -11,7 +11,7 @@ Reviewed 2026-10-23. Scope: Python, Ruby, PHP. Method: `gh api repos/...` (archi
 | Python | Type checking | Pyrefly (pyright as the conservative alternative) | Low-medium: no clear winner |
 | Python | Dead code | vulture | Medium |
 | Python | Architecture | import-linter | Medium-high |
-| Python | Security (code) | Ruff `S` rules, no Bandit | Medium |
+| Python | Security (code) | Ruff `S`; add Bandit B614/B615 for model loads and downloads ([recheck](bandit.md)) | Executed narrow comparison |
 | Python | Docstrings, complexity | Ruff (`D`, `C901`), no pydocstyle, xenon, radon | Medium-high |
 | Python | Lockfile freshness | `uv lock --check` / `uv sync --locked` | Medium |
 | Python | Dependency vulnerabilities | Defer to the OSV-Scanner decision; pip-audit if you want a native tool | Low |
@@ -58,7 +58,7 @@ Ruff 0.17.2 is current (2026-10-22). Facts checked: output formats include `json
 
 | Standalone tool | Last release / push | Verdict |
 |---|---|---|
-| [Bandit](https://github.com/PyCQA/bandit) 1.9.4 (2026-02-25), Apache-2.0, 8.3k stars | push 2026-10-19 | Overlap with Ruff `S`. Only real gain: custom plugins. Not adopted. |
+| [Bandit](https://github.com/PyCQA/bandit) | [Rechecked 2026-11-10](bandit.md) | Conditional addition: B614/B615 catch model-load and download cases Ruff misses. The earlier file-count comparison did not establish rule parity. |
 | [pydocstyle](https://github.com/PyCQA/pydocstyle) 6.3.0 | **archived**, last push 2023-11 | Replaced by Ruff `D`. |
 | [xenon](https://github.com/rubik/xenon) 0.9.3 (2024-10), [radon](https://github.com/rubik/radon) 6.0.1 (2023-03) | last push 2024-10 | Stale; Ruff `C901` and `PLR09xx` give a hard threshold. |
 | [flake8](https://github.com/PyCQA/flake8) 7.4.1, [pylint](https://github.com/pylint-dev/pylint) 4.1.3 (GPL-2.0) | active | Overlap. Pylint's cross-module checks are the only reason to keep it; not compared here. |
@@ -335,13 +335,12 @@ Place each under the ecosystem heading shown. For Python, Ruby and PHP the READM
 ### Amendments to existing entries (not new entries)
 
 - **RuboCop:** add to *Limits*: "SARIF output is built in. Add `rubocop-rails`, `rubocop-rspec` (or `rubocop-minitest`) and `rubocop-performance` as plugins; Standard and fasterer are not needed."
-- **Ruff:** add to *Limits*: "The `S` rules replace Bandit, `D` replaces pydocstyle (archived), `C901` replaces xenon and radon; pair with vulture for dead code across modules."
+- **Ruff:** the `S` rules overlap Bandit but do not replace every check; see the [executed B614/B615 comparison](bandit.md). `D` replaces pydocstyle (archived), `C901` replaces xenon and radon; pair with vulture for dead code across modules.
 
 ### Rows for docs/not-adopted.md
 
 | Tool | Reason | What would change the answer |
 |---|---|---|
-| Bandit | Overlap with Ruff `S` rules. | You need custom Bandit plugins. |
 | pydocstyle | Archived 2023-11; Ruff `D`. | None. |
 | xenon, radon | Stale (no release since 2023-24); Ruff `C901`. | A new release. |
 | Standard (Ruby) | Wrapper over RuboCop; overlap. | You want zero configuration. |
