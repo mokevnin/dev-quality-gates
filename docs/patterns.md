@@ -57,6 +57,21 @@ Run slow scans that depend on external data (a vulnerability database, for examp
 
 Set a coverage floor in the config (for example `.testcoverage.yml` for go-test-coverage). Raise it when coverage rises and never lower it. The floor leaves room below the measured value, so noise does not fail builds, but a drop does.
 
+## Mutation testing on changed files
+
+A coverage gate shows that the changed lines ran. A mutation run shows that a test fails when the code is wrong. Gate the files the pull request changed, not the whole project, because a whole-project score hides a weak new file. With StrykerJS, list the changed sources and skip the step when the list is empty: a `--mutate` that matches nothing exits 1. Then run `stryker run --mutate <files>`, with `thresholds.break` set below 100 in the config. Some mutants cannot be killed, so a score of 100 is not reachable in general. Run the whole-project score on a schedule as a report. [Executed checks](../research/stryker.md).
+
+```sh
+set -e
+# A separate command, so a missing base ref (shallow clone) fails the step instead of passing it.
+git diff --name-only --diff-filter=AM origin/main...HEAD -- \
+  'src/*.ts' 'src/*.js' ':!*.test.*' ':!*.spec.*' ':!*.d.ts' > changed.txt
+files=$(paste -sd, - < changed.txt)
+[ -z "$files" ] || npx stryker run --mutate "$files"
+```
+
+A pull request that changes only tests skips this step, so a weakened test for unchanged code is caught only by the scheduled run.
+
 ## Immutable migrations
 
 A migration that has shipped must not change. Check it in CI against the base branch: fail when an existing migration file is modified, and allow a documented escape (for example a marker in the pull request body). Lint added migrations for locks and downtime (squawk for PostgreSQL).

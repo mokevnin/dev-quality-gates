@@ -121,7 +121,7 @@ Recommendation: no clear winner, no entry. taplo has the usage but its last rele
 Recommendations:
 
 - Unused dependencies: cargo-machete as the one pick (10x cargo-shear's downloads, simple, `--fix`). Watch cargo-shear; it is the more accurate, newer one. Confidence: medium-low. Real gap in our Rust section: cargo-deny does not detect unused dependencies.
-- cargo-nextest, cargo-mutants, cargo-vet, cargo-hack: no entry. nextest is a runner (popular and excellent, but test running is not a standards check); mutants is slow; vet needs an audit process; hack is for libraries.
+- cargo-nextest, cargo-mutants, cargo-vet, cargo-hack: no entry. nextest is a runner (popular and excellent, but test running is not a standards check); mutants was not run on changed files ([stryker.md](stryker.md)); vet needs an audit process; hack is for libraries.
 
 ## 11. Task runners, bundlers, runtimes (only if enforcement-relevant)
 

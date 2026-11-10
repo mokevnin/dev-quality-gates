@@ -843,6 +843,22 @@
       "details": "research/ecosystem-gaps.md"
     },
     {
+      "id": "stryker-js",
+      "name": "StrykerJS",
+      "repo": "stryker-mutator/stryker-js",
+      "category": "JavaScript and TypeScript",
+      "last_reviewed": "2026-11-10",
+      "sources": [
+        "https://github.com/stryker-mutator/stryker-js",
+        "https://stryker-mutator.io/docs/stryker-js/introduction/",
+        "https://www.npmjs.com/package/@stryker-mutator/core",
+        "research/stryker.md"
+      ],
+      "rationale": "mutation testing: changes the code and fails when the tests still pass, so it catches tests that run every line but check nothing. Run it on the files a pull request changed, with `--mutate` and a `thresholds.break` score.",
+      "limitations": "Only a changed-files run is a gate; a whole-project or `--incremental` run dilutes a weak new file and passed in the fixture. CI must skip it when no source file changed, because a `--mutate` that matches nothing exits 1; a pull request that changes only tests therefore skips it, so keep a scheduled whole-project run. Equivalent mutants keep the score below 100. In a pnpm install the runner had to be named in `plugins`. Ran 10.1.1 on 2026-11-10 with the vitest runner: one changed file of unjs/ufo took 6 to 11 seconds on a 10-core machine; fewer cores and slower tests cost proportionally more. Other runners (Jest, Mocha) were not run.",
+      "details": "research/stryker.md"
+    },
+    {
       "id": "stylelint",
       "name": "Stylelint",
       "repo": "stylelint/stylelint",

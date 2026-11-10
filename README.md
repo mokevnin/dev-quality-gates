@@ -49,6 +49,7 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 - **[TypeScript](https://github.com/microsoft/TypeScript)**: type checking with `tsc --noEmit` and `strict`. [Details](research/stack-javascript.md).
 - **[dependency-cruiser](https://github.com/sverweij/dependency-cruiser)**: import-graph rules (forbidden paths, cycles, orphans, dev dependencies in production code) with non-zero exit and JSON output; `--ignore-known` baselines legacy violations. [Details](research/stack-javascript.md).
 - **[syncpack](https://github.com/JamieMason/syncpack)**: enforces one version of each dependency and consistent ranges across a monorepo. [Details](research/ecosystem-gaps.md).
+- **[StrykerJS](https://github.com/stryker-mutator/stryker-js)**: mutation testing: changes the code and fails when the tests still pass, so it catches tests that run every line but check nothing. Run it on the files a pull request changed, with `--mutate` and a `thresholds.break` score. [Details](research/stryker.md).
 
 ### Python
 
@@ -214,6 +215,7 @@ These categories matter but have **no recommendation yet**: the candidates were 
 | IaC and Kubernetes security | Checkov, Trivy config, kube-linter | Overlapping rules, no clear winner. |
 | Custom rules with data-flow | Opengrep, Semgrep | Opengrep is a community fork; its cross-file limits and licence trade-offs need a closer look. |
 | Architecture, other ecosystems | arch-go, tach | go-arch-lint is now listed; arch-go is the smaller Go alternative. tach is a Rust option for Python. |
+| Mutation testing, other ecosystems | Stryker.NET, cargo-mutants, PIT, mutmut, Infection | StrykerJS is listed after a changed-files run worked as a gate ([details](research/stryker.md)). The others were read, not run. Each needs the same run on changed files before a pick. |
 | YAML style | yamllint | Not yet compared with schema validation. |
 | Mermaid diagrams in Markdown | mermaid-lint, mermaid-check, md-mermaid-lint, maid | rumdl does not parse diagrams (run). mermaid-lint works as a parse gate in a run but is young and small; the others were not run. [Notes](research/mermaid.md). |
 | Licences and supply chain | REUSE, Scorecard, Syft, ScanCode Toolkit | Mostly reporting tools; need an enforcement angle. |

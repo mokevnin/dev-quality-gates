@@ -126,7 +126,7 @@ pip-audit: PyPI JSON API or OSV as source, `--locked` for lockfiles, `--fix`, fo
 ### Tests: coverage and mutation
 
 - `coverage.py` 7.17.0 (2026-10-22, Apache-2.0) has `[report] fail_under` (found in its docs). That is the coverage gate; no separate tool needed.
-- Mutation: [mutmut](https://github.com/boxed/mutmut) 3.8.0 (2026-09-12, BSD-3-Clause, 1.5k stars) and [cosmic-ray](https://github.com/sixty-north/cosmic-ray) 8.7.0 (2026-08-09, MIT, 662 stars) are both active. Neither was run, and a mutation gate is slow, so **no pick**.
+- Mutation: [mutmut](https://github.com/boxed/mutmut) 3.8.0 (2026-09-12, BSD-3-Clause, 1.5k stars) and [cosmic-ray](https://github.com/sixty-north/cosmic-ray) 8.7.0 (2026-08-09, MIT, 662 stars) are both active. Neither was run, so **no pick** (the earlier "slow" was read, not run; StrykerJS passed a changed-files run, see [stryker.md](stryker.md)).
 
 ---
 
@@ -288,7 +288,7 @@ The feature matrix and timings (2 s versus 72 s and 124 s on 15,000 files) come 
 - [shipmonk/dead-code-detector](https://github.com/shipmonk-rnd/dead-code-detector) 1.4.2 (2026-09-21, MIT, 530 stars): PHPStan extension for unused methods, properties, constants and enum cases. Pick; limit: needs PHPStan, framework entry points require extension config.
 - [TomasVotruba/type-coverage](https://github.com/TomasVotruba/type-coverage) 2.5.1 (2026-10-09, MIT, 226 stars): PHPStan extension that fails when return, param or property type coverage drops under a minimum. Useful but narrow; mention only.
 - [PHPMD](https://github.com/phpmd/phpmd) 3.0.0 (2026-10-04, BSD-3-Clause, PHP 8.1 or later): the [2026-10-24 executed comparison](phpmd-mago.md) confirms additional NPath, direct LOC, numeric coupling and combined public-surface budgets. Cyclomatic complexity and member/parameter counts already overlap Mago; WMC aggregation differs. Not recommended: Mago stays the default PHP toolchain, and a narrow PHPMD companion is optional for teams that explicitly need those budgets. The review also covers 3.x migration and current parser/configuration limitations.
-- [Infection](https://github.com/infection/infection) 0.35.8 (2026-10-14, BSD-3-Clause, 2.3k stars): mutation testing; `--min-msi` threshold not verified in this run. Slow; no pick.
+- [Infection](https://github.com/infection/infection) 0.35.8 (2026-10-14, BSD-3-Clause, 2.3k stars): mutation testing; `--min-msi` threshold not verified in this run. No pick (the earlier "slow" was read, not run; StrykerJS passed a changed-files run, see [stryker.md](stryker.md)).
 - [GrumPHP](https://github.com/phpro/grumphp) v2.26.0 (2026-10-16, MIT, 4.3k stars): git-hook runner, belongs to the open "Git hooks" decision.
 
 ---
