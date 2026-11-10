@@ -24,7 +24,7 @@ Reasons used below:
 | [gitlint](https://github.com/jorisroovers/gitlint) | Stale: last release 2023-03, last push 2024-07. | New releases. |
 | [conventional-pre-commit](https://github.com/compilerla/conventional-pre-commit) | A single pre-commit hook (559 stars); does not check a CI range the way commitlint does. | You only need the local hook. |
 | [git-cliff](https://github.com/orhun/git-cliff) | A changelog generator (12k stars), not a linter. | Not applicable. |
-| [Bandit](https://github.com/PyCQA/bandit) | Overlap with the Ruff `S` rules. | You need custom Bandit plugins. |
+| [Bandit](https://github.com/PyCQA/bandit) (full suite by default) | Most checks overlap Ruff `S`. [Rechecked 2026-11-10](../research/bandit.md): B614/B615 cover demonstrated gaps and are now recommended for relevant projects. | Select the missing checks or use required custom Bandit plugins; do not duplicate both full suites. |
 | [pydocstyle](https://github.com/PyCQA/pydocstyle) | Archived 2023-11-03; Ruff `D` rules replace it. | None. |
 | [Psalm](https://github.com/vimeo/psalm) | Mago covers static analysis; Psalm 7.0 was still a release candidate when reviewed. | A stable 7.0 and a clear gap in Mago. |
 | qossmic/deptrac | Archived and moved; use [deptrac/deptrac](https://github.com/deptrac/deptrac). | None. |
