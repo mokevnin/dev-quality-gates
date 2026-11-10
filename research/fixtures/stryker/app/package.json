@@ -1,0 +1,14 @@
+{
+  "name": "stryker-fixture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "10.1.1",
+    "@stryker-mutator/vitest-runner": "10.1.1",
+    "@vitest/coverage-v8": "5.0.5",
+    "vitest": "5.0.5"
+  }
+}

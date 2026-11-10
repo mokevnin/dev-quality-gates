@@ -14,7 +14,7 @@ Research date: 2026-10-23. Method: GitHub API (stars, pushes, releases), registr
 
 1. **osv-scanner (already listed) reads these lockfiles**, checked in its docs: `Gemfile.lock`, `uv.lock`, `poetry.lock`, `pnpm-lock`, `Cargo.lock`, `composer.lock`, `mix.lock`, `pom.xml`, `gradle.lockfile`, `go.mod`, `packages.lock.json`. So one tool per job means we do **not** add bundler-audit (GPL-3.0), pip-audit, `uv audit`, `composer audit`, mix_audit or OWASP Dependency-Check by default. Rows below say "overlap: osv-scanner".
 2. **Plugins and formatters of tools already listed are edits to those entries, not new entries** (see "Edits to existing entries").
-3. **Mutation testing** (mutmut, cargo-mutants, Stryker, Infection, PIT) is slow and belongs on a schedule, not on every pull request (see `docs/patterns.md`, "Reporting versus enforcing"). No clear winner is needed per stack; none is proposed.
+3. **Mutation testing** (mutmut, cargo-mutants, Stryker, Infection, PIT): no pick per stack yet. The earlier "slow, run on a schedule" was read, not run. A StrykerJS run limited to changed files worked as a pull request gate in seconds per file, and StrykerJS is now listed; see [stryker.md](stryker.md). The others need the same run.
 4. **Library-only tools stay out** (cargo-hack, cargo-semver-checks, publint, arethetypeswrong), as already decided for cargo-semver-checks.
 
 ---
@@ -78,7 +78,7 @@ Confidence: strong_migrations, Bullet, i18n-tasks high; Packwerk medium; Herb an
 - **uv**: `uv lock --check` and `uv sync --locked` are built in; document as a pattern, not an entry.
 - **import-linter stays**; tach is a Rust option with a fifth of the downloads. No change.
 - **Types: no clear winner.** Pyrefly is now 1.4.0 stable (not beta), ty is still 0.0.x. django-stubs works through the mypy plugin; Rust checkers do not run mypy plugins, so Django projects that want model-aware types still need mypy. Update the "Python types" row in Under review.
-- **No clear winner:** N+1 for Django (nplusone is dead since 2022; django-perf-rec has 354 stars), mutation testing (mutmut leads, scheduled use only), template lint (djLint is GPL-3.0 and covers many template languages, but formatting overlaps).
+- **No clear winner:** N+1 for Django (nplusone is dead since 2022; django-perf-rec has 354 stars), mutation testing (mutmut leads; not run, see [stryker.md](stryker.md) for the changed-files gate), template lint (djLint is GPL-3.0 and covers many template languages, but formatting overlaps).
 - **Reject:** pip-audit (overlap: osv-scanner).
 
 ## JavaScript and TypeScript (and web)
@@ -155,7 +155,7 @@ Confidence: strong_migrations, Bullet, i18n-tasks high; Packwerk medium; Herb an
 - **cargo-machete** for unused dependencies: fast and widely used (10x cargo-shear), CI exit code via `--with-metadata` and non-zero on findings (docs: unverified). It is regex-based, so it can report false positives, which are handled with a `package.metadata.cargo-machete.ignored` list. cargo-shear is the credible newer alternative (AST-based, by the Oxc author, declared feature-complete, also finds unlinked source files); this is a judgement call, flagged. cargo-udeps needs nightly.
 - **cargo-nextest**: the practitioner standard test runner (about 3x faster, retries, flaky-test detection, JUnit output). It enforces by failing the test run, so it is a speed and signal tool. Optional entry; confidence medium.
 - **cargo-llvm-cov** for coverage floors (`--fail-under-lines`, docs: unverified); preferred to tarpaulin on downloads and on accuracy of LLVM instrumentation.
-- **Reject:** cargo-hack (library feature matrices), cargo-vet (needs an audit process and a team; cargo-deny already covers advisories and licences), cargo-mutants (scheduled; a good tool, no entry needed).
+- **Reject:** cargo-hack (library feature matrices), cargo-vet (needs an audit process and a team; cargo-deny already covers advisories and licences), cargo-mutants (no entry yet; not run on changed files, see [stryker.md](stryker.md)).
 
 ## JVM: Java and Kotlin
 
@@ -212,7 +212,7 @@ Confidence: strong_migrations, Bullet, i18n-tasks high; Packwerk medium; Herb an
 | Static analysis (listed) | PHPStan | phpstan/phpstan | 14134 | 16.9M monthly | 2.3.1 | MIT |
 
 **Recommendation: Rector.** `vendor/bin/rector --dry-run` shows the diff and fails (non-zero) when changes are pending (README shows the dry-run; exit code is documented behaviour but unverified by us). It does a different job from Mago: automated framework and PHP version upgrades and refactoring sets. Limits: a rule-set tool, so results depend on the sets you choose; run `--dry-run` in CI, apply locally. Confidence medium-high.
-`composer audit`: overlap with osv-scanner. composer-dependency-analyser: hold (small, last release 11 months ago). Infection: scheduled.
+`composer audit`: overlap with osv-scanner. composer-dependency-analyser: hold (small, last release 11 months ago). Infection: under review, see [stryker.md](stryker.md).
 
 ## Elixir and Phoenix
 
