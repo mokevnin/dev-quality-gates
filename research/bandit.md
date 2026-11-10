@@ -20,6 +20,16 @@ The runner uses `bandit -f json FILE` and `ruff check --isolated --no-cache --pr
 
 This proves two useful gaps and one overlap, not complete rule parity. The earlier comparison of plugin-file counts in [the Python notes](stack-python-ruby-php.md) could not establish equivalent coverage.
 
+## Rule-ID comparison
+
+On 2026-11-10 the test IDs listed by `bandit -h` (1.9.4) were matched against `ruff rule --all` (0.17.4), where Ruff `Snnn` mirrors Bandit `Bnnn`. Only four Bandit tests have no `S` counterpart:
+
+- B613 (trojan source): Ruff covers it outside `S` with [`PLE2502`](https://docs.astral.sh/ruff/rules/bidirectional-unicode/).
+- B703 (Django `mark_safe`): overlaps [`S308`](https://docs.astral.sh/ruff/rules/suspicious-mark-safe-usage/).
+- B614 and B615: no Ruff equivalent; the fixture above confirms both.
+
+So B614 and B615 are the whole gap, not a sample of it. The matching is by ID only; it does not compare how each pair of rules behaves.
+
 ## Alternatives and integration
 
 | Tool | Coverage and configuration | Speed and integration |
@@ -30,7 +40,16 @@ This proves two useful gaps and one overlap, not complete rule parity. The earli
 
 Bandit does not replace Ruff formatting or general lint. It also does not replace OSV-Scanner dependency checks or a dedicated secret scanner. Custom plugins are another documented benefit, but this review does not test them.
 
-For the demonstrated gap, select `bandit -r src -t B614,B615 -f json`. Adjust `src` to the project source directory. Do not pass `--exit-zero` in CI. Reject a nonempty JSON `errors` list as well as findings: an incomplete scan must not count as a clean result. The fixture verifies this condition for its inputs.
+For the demonstrated gap, select only B614 and B615, and do not pass `--exit-zero` in CI. A file Bandit cannot parse is reported in the JSON `errors` list, but when it produces no finding Bandit still exits 0 ([#1326](https://github.com/PyCQA/bandit/issues/1326); reproduced with 1.9.4 on 2026-11-10). Fail the job on errors as well as findings:
+
+```sh
+status=0
+bandit -r src -t B614,B615 -f json -o bandit.json || status=$?
+jq -e '.errors == []' bandit.json > /dev/null || status=1
+exit "$status"
+```
+
+Adjust `src` to the project source directory. Run on 2026-11-10: exit 1 on a syntax error alone, exit 1 on a B614 finding, exit 0 on a clean directory. Ruff in the same pipeline also fails on syntax errors, so the check matters most when Bandit scans files Ruff excludes.
 
 ## Currency and open issues
 

@@ -341,7 +341,6 @@ Place each under the ecosystem heading shown. For Python, Ruby and PHP the READM
 
 | Tool | Reason | What would change the answer |
 |---|---|---|
-| Bandit (full suite by default) | Overlap with Ruff `S` rules. | Select B614/B615 for the [verified gaps](bandit.md), or use required custom plugins. |
 | pydocstyle | Archived 2023-11; Ruff `D`. | None. |
 | xenon, radon | Stale (no release since 2023-24); Ruff `C901`. | A new release. |
 | Standard (Ruby) | Wrapper over RuboCop; overlap. | You want zero configuration. |

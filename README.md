@@ -53,7 +53,7 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 ### Python
 
 - **[Ruff](https://github.com/astral-sh/ruff)**: linter and formatter that replaces Flake8, isort, pyupgrade and Black.
-- **[Bandit](https://github.com/PyCQA/bandit)**: additional security checks for Python projects that load PyTorch models or download from Hugging Face: select `B614,B615` to cover gaps in Ruff `S`. Reports JSON and exits 1 on findings. [Details](research/bandit.md).
+- **[Bandit](https://github.com/PyCQA/bandit)**: additional security checks for Python projects that load PyTorch models or download from Hugging Face: select `B614,B615` to cover gaps in Ruff `S`. [Details](research/bandit.md).
 - **[ty](https://github.com/astral-sh/ty)**: fast Python type checker and language server from the authors of Ruff and uv. [Details](research/mypy-plugins.md).
 - **[deptry](https://github.com/osprey-oss/deptry)**: unused, missing and transitive dependencies.
 - **[import-linter](https://github.com/seddonym/import-linter)**: import contracts (layers, forbidden, independence, protected) that fail CI. [Details](research/stack-python-ruby-php.md).
