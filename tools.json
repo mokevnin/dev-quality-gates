@@ -619,7 +619,7 @@
     {
       "id": "import-linter",
       "name": "import-linter",
-      "repo": "seddonym/import-linter",
+      "repo": "import-linter/import-linter",
       "category": "Python",
       "last_reviewed": "2026-10-23",
       "sources": [

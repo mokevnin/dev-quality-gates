@@ -63,7 +63,7 @@ Confidence: strong_migrations, Bullet, i18n-tasks high; Packwerk medium; Herb an
 | N+1 | nplusone | jmcarp/nplusone | 1069 | 442k | 1.0.0 (tag), last push 2022-11 | MIT |
 | Coverage | coverage.py | nedbat/coveragepy | 3424 | 282M | 7.17.0, 2026-10-22 | Apache-2.0 |
 | Coverage on changed lines | **diff-cover** | Bachmann1234/diff_cover | 849 | 24.2M | 10.6.0, 2026-09-22 | Apache-2.0 |
-| Boundaries | import-linter (listed) | seddonym/import-linter | 1234 | 21.2M | 2.15 (tag) | BSD-2-Clause |
+| Boundaries | import-linter (listed) | import-linter/import-linter | 1234 | 21.2M | 2.15 (tag) | BSD-2-Clause |
 | Boundaries | tach | tach-org/tach | 2851 | 4.6M | 0.35.3, 2026-10-06 | MIT |
 | Mutation | mutmut | boxed/mutmut | 1502 | 5.8M | 3.8.0, 2026-09-12 | BSD-3-Clause |
 | Mutation | cosmic-ray | sixty-north/cosmic-ray | 662 | 579k | 8.7.0, 2026-08-09 | MIT |
