@@ -88,6 +88,7 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 ### PHP
 
 - **[Mago](https://github.com/carthage-software/mago)**: PHP toolchain in one binary: linter, formatter, static analyzer and architectural `guard` rules, with auto-fixes and a baseline.
+- **[Soda](https://github.com/cosmira/soda)**: object-design checks across consumers, including repeated decisions about another object's state; selected rules fail CI and report JSON, JUnit or TeamCity diagnostics. [Details](research/soda.md).
 - **[Rector](https://github.com/rectorphp/rector)**: automated upgrades and refactoring sets for PHP; `--dry-run` in CI shows pending changes. [Details](research/ecosystem-gaps.md).
 
 ### Java
