@@ -67,6 +67,8 @@ Reasons used below:
 | [ansible-review](https://github.com/willthames/ansible-review) | Stale wrapper around ansible-lint. PyPI 0.13.9 on 2018-11-25, last push 2021-04-01. On 2026-11-01 `ansible-review --help` exited 1 because `default_rulesdir` is gone from ansible-lint. [Details](../research/ansible.md). | A release that starts against current ansible-lint and checks something it does not. |
 | [Steampunk Spotter](https://gitlab.com/xlab-steampunk/steampunk-spotter-client/spotter-cli) | Current CLI (6.6.0, 2026-10-14), but a scan needs their hosted API. The vendor says it does not replace ansible-lint. [Details](../research/ansible.md). | A local mode that fails the build without uploading the playbook. |
 | [Molecule](https://github.com/ansible/molecule) | A test runner for roles and playbooks (v26.10.0, 2026-10-12), not a linter. | Not applicable. |
+| [keep-sorted](https://github.com/google/keep-sorted) | Narrower scope than blockwatch: sorts and deduplicates marked blocks only (v0.11.0, ran 2026-11-27), with no cross-file value sync, diff coupling or custom rules. [Details](../research/cross-file-sync.md). | You only need sorted blocks and want automatic in-place fixing (`--mode=fix`), which blockwatch lacks. |
+| [ifttt-lint](https://github.com/simonepri/ifttt-lint) | Narrower scope than blockwatch: checks `LINT.IfChange`/`LINT.ThenChange` diff coupling only (0.11.3, ran 2026-11-27), with no diff-free value equality, symbol targets, config blocks for JSON or SARIF output. [Details](../research/cross-file-sync.md). | You already use Google's `LINT.IfChange` syntax or need native `jj` diff integration without value sync. |
 
 ## Held back (Unverified)
 

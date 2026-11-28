@@ -145,6 +145,7 @@ The entries below are **generated from [`tools.json`](tools.json)** (`pnpm run r
 
 - **[ast-grep](https://github.com/ast-grep/ast-grep)**: project-specific syntax rules written as YAML patterns, with tests for the rules themselves and SARIF output. Good for import-boundary and banned-call rules. [Details](research/custom-rules.md).
 - **[easement](https://github.com/mokevnin/easement)**: one architecture config (`easement.yml`) for Go, TypeScript/JavaScript, Python and Java: components by path, allowed dependencies, public APIs and cycles, with a message shown for each violation. Supports a baseline and checking only what a pull request adds. [Details](research/custom-rules.md).
+- **[blockwatch](https://github.com/mennanov/blockwatch)**: cross-file sync and block linter across 39 languages and config formats: enforces that linked values match (`same-as`), paired blocks change together in a diff (`affects`), and lists stay sorted, unique or match regex and Lua rules. Rules live in comments or `blockwatch.toml`, with JSON and SARIF output. [Details](research/cross-file-sync.md).
 
 ### Secrets
 

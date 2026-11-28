@@ -1,0 +1,4 @@
+[[block]]
+target = 'deploy.json#/port'
+name = 'port'
+same-as = 'app/settings.py#/PORT'
