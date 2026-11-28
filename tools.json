@@ -644,6 +644,21 @@
       "limitations": "Created in October 2024, so younger than PHPStan; its framework-specific extensions (Laravel, Symfony) were not compared rule by rule. Check your framework's coverage before dropping PHPStan."
     },
     {
+      "id": "soda",
+      "name": "Soda",
+      "repo": "cosmira/soda",
+      "category": "PHP",
+      "last_reviewed": "2026-11-16",
+      "sources": [
+        "https://github.com/cosmira/soda/releases/tag/v1.4.0",
+        "https://github.com/cosmira/soda/blob/v1.4.0/docs/rules/repeated_foreign_state_decision.md",
+        "research/soda.md"
+      ],
+      "rationale": "object-design checks across consumers, including repeated decisions about another object's state; selected rules fail CI and report JSON, JUnit or TeamCity diagnostics.",
+      "limitations": "Use selected design checks alongside Mago, not a second full lint suite: formatting, metrics and dependency policies overlap existing recommendations. Ran Soda 1.4.0 on repeated and encapsulated owner-state predicates; alternatives were reviewed by documentation only, with no speed comparison; PHP 8.2 or later, no autofix, and this heuristic requires local owner types with directly readable state.",
+      "details": "research/soda.md"
+    },
+    {
       "id": "rumdl",
       "name": "rumdl",
       "repo": "rvben/rumdl",
